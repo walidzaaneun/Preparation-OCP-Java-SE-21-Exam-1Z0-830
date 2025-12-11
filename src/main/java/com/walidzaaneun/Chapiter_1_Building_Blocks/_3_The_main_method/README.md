@@ -1,5 +1,15 @@
 # The main() Method
 
+## Section Content
+<!-- TOC -->
+* [The main() Method](#the-main-method)
+  * [creating the main() method](#creating-the-main-method)
+  * [The main() method’s signature](#the-main-methods-signature)
+  * [Optional Modifiers in main() Methods](#optional-modifiers-in-main-methods)
+  * [Passing Parameters to a Java Program](#passing-parameters-to-a-java-program)
+  * [Single-File Source Code](#single-file-source-code)
+<!-- TOC -->
+
 ## creating the main() method
 A Java program begins execution with its `main()` method. The` main()` method is often called an entry point into the
 program, because it is the starting point that the JVM looks for
