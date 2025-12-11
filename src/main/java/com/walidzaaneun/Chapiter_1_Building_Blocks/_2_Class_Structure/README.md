@@ -1,5 +1,13 @@
 # Class Structure
 
+## Section Content
+<!-- TOC -->
+* [Class Structure](#class-structure)
+  * [Fields and Methods](#fields-and-methods)
+  * [Comments](#comments)
+  * [Classes and Source Files](#classes-and-source-files)
+<!-- TOC -->
+
 In Java programs, classes are the basic building blocks. When
 defining a class, you describe all the parts and characteristics of
 one of those building blocks.
