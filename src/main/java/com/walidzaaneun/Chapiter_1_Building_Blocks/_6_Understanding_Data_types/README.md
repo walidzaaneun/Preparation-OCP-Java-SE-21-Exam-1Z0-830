@@ -1,5 +1,21 @@
 # Understanding Data Types
 
+## Section Content
+<!-- TOC -->
+* [Understanding Data Types](#understanding-data-types)
+  * [The Primitive Types](#the-primitive-types)
+    * [Is String a Primitive?](#is-string-a-primitive)
+    * [Signed and Unsigned: short and char](#signed-and-unsigned-short-and-char)
+    * [Writing Literals](#writing-literals)
+    * [Literals and the Underscore Character](#literals-and-the-underscore-character)
+  * [Reference Types](#reference-types)
+    * [Objects vs. References](#objects-vs-references)
+  * [Distinguishing Between Primitives and Reference Types](#distinguishing-between-primitives-and-reference-types)
+    * [Wrapper Classes](#wrapper-classes)
+      * [Converting from String Using valueOf() Methods](#converting-from-string-using-valueof-methods)
+  * [Defining Text Blocks](#defining-text-blocks)
+<!-- TOC -->
+
 Java applications contain two types of data: primitive types and
 reference types. In this section, we discuss the differences between
 a primitive type and a reference type.
@@ -290,3 +306,112 @@ numbers
 * `sum(int num1, int num2)`, which adds the two numbers
 
 ## Defining Text Blocks
+Earlier we saw a simple String with the value `hello`. What if we
+want to have a String with something more complicated? For
+example, let’s figure out how to create a String with this value:
+
+```text
+"OCP 21 Preparation"
+ by walidzaaneun
+```
+Building this as a String requires two things you haven’t learned
+yet. The syntax `\"` lets you say you want a `"` rather than to end the
+`String`, and `\n` says you want a new line. Both of these are called
+_**escape characters**_ because the backslash provides a special
+meaning. With these two new skills, we can write this:
+
+```java
+String eyeTest = "\"OCP 21 Preparation\" \n by walidzaaneun";
+```
+While this does work, it is hard to read. Luckily, Java has text
+blocks, also known as multiline strings. See this Figure for the text
+block equivalent.
+![Text block.png](Text%20block.png)
+A text block starts and ends with three double quotes `"""`, and the
+contents don’t need to be escaped. This is much easier to read.
+Notice how the type is still `String`. This means any `String` methods
+you already know or will learn in Chapter 4 apply to text blocks too.
+It also means you use a text block with a method that takes a `String`.
+For example:
+```java
+public String label(String title, String author) {
+    return """
+            Book:
+            """ + title + " by " + author;
+}
+public void prepare() {
+    String labelled = label("""
+            Java Study Guide
+            For Java 21
+            2024 Edition""", "Jeanne & Scott");
+    System.out.println(labelled);
+}
+```
+
+You might have noticed the words **incidental** and **essential
+whitespace** in the figure. What’s that? **Essential whitespace** is part
+of your String and is important to you. Incidental whitespace just
+happens to be there to make the code easier to read. You can
+reformat your code and change the amount of **incidental
+whitespace** without any impact on your `String` value.
+
+This Table shows some special formatting sequences and compares
+how they work in a regular `String` and a text block.
+
+| Formatting            | Meaning in regular `String`                                        | Meaning in text block      |
+|-----------------------|--------------------------------------------------------------------|----------------------------|
+| `\"`                  | `"`                                                                | `"`                        |
+| `\"""`                | n/a - invalid                                                      | `"""`                      |
+| `\"\"\"`              | `"""`                                                              | `"""`                      |
+| Space (at endof line) | Space                                                              | Ignored                    |
+| `\s`                  | Two spaces (\s is a space and preserves leading space on the line) | Two spaces                 |
+| `\` (at end of line)  | n/a – Invalid                                                      | mits new line on that line |
+| `\n`                  | new line                                                           | new line                   |
+
+Let’s try a few examples ; 
+```java
+String block = """doe"""; // DOES NOT COMPILE
+```
+Text blocks require a line break after the opening `"""`, making this
+one invalid
+
+```java
+String block = """
+     doe \
+     deer""";
+```
+this one output ` doe deer ` since the `\` tells Java not to add a
+new line before `deer`.
+
+```java
+String block = """
+     doe \n
+     deer
+     """;
+```
+output :
+```terminaloutput
+doe
+
+deer
+
+```
+This time we have four lines. Since the text block has the closing `"""`
+on a separate line, we have three lines for the lines in the text block
+plus the explicit `\n`. 
+
+```java
+String block = """
+          "doe\"\"\"
+         \"deer\"""
+        """;
+System.out.println("*"+ block + "*");
+```
+output :
+```terminaloutput
+  "doe"""
+ "deer"""
+
+```
+All of the `\"` escape the `"`. There is one space of essential whitespace
+on the doe and deer lines
