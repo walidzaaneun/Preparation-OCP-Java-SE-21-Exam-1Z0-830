@@ -287,7 +287,8 @@ pass the extension when running a program.
 
 This figure shows where the .class files were created in the
 directory structure.
-![Compiling with packages.png](Compiling with packages.png)
+
+![Compiling with packages.png](Compiling%20with%20packages.png)
 
 ## Compiling to Another Directory
 same directory as the source code. It also provides an option to
@@ -305,7 +306,8 @@ javac -d classes packagea/ClassA.java packageb/ClassB.java
 ```
 
 this figure shows this new structure.
-![Compiling with packages and directories.png](Compiling with packages and directories.png)
+
+![Compiling with packages and directories.png](Compiling%20with%20packages%20and%20directories.png)
 
 To run the program, you specify the classpath so Java knows where
 to find the classes. There are three options you can use. All three of
