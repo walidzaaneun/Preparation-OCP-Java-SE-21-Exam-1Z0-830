@@ -19,6 +19,8 @@
 * `main()` must be **public**, **static**, and return **void**.
 
 </details>
+
+
 ---
 
 2. Which answer options represent the order in which the
@@ -45,6 +47,7 @@
 * Order must be: **package → import → class**.
 
 </details>
+
 ---
 
 3. Which of the following are true? (Choose all that apply.)
@@ -72,6 +75,7 @@
 * `bun` is a reference to an object.
 
 </details>
+
 ---
 
 4. Which of the following are valid Java identifiers? (Choose all
@@ -92,6 +96,7 @@
 * Cannot be a reserved word or start with a digit.
 
 </details>
+
 ---
 
 5. Which statements about the following program are correct?
@@ -131,6 +136,7 @@
 * Objects are eligible when no references remain.
 
 </details>
+
 ---
 
 6. Assuming the following class compiles, how many variables
@@ -170,6 +176,7 @@
 * Scope depends on `{}` blocks.
 
 </details>
+
 ---
 
 7. Which are true about this code? (Choose all that apply.)
@@ -201,6 +208,7 @@
 * Indentation matters.
 
 </details>
+
 ---
 
 8. Which of the following code snippets about var compile without
@@ -222,6 +230,7 @@
 * Division by zero compiles.
 
 </details>
+
 ---
 
 9.  Which of the following is correct?  
@@ -240,6 +249,7 @@
 * Class reference variables default to `null`.
 
 </details>
+
 ---
 
 10. Which of the following expressions, when inserted
@@ -266,6 +276,7 @@
 * Underscores allowed inside literals.
 
 </details>
+
 ---
 
 11. Given the following two class files, what is the maximum
@@ -300,6 +311,7 @@
 * Same package needs no import.
 
 </details>
+
 ---
 
 12. Which statements about the following class are correct?
@@ -333,6 +345,7 @@
 * Scope matters.
 
 </details>
+
 ---
 
 13. Given the following classes, which of the following snippets can
@@ -370,6 +383,7 @@
 * Explicit imports override wildcards.
 
 </details>
+
 ---
 
 14. Which of the following statements about the code snippet are
@@ -397,6 +411,7 @@
 * Methods on primitives not allowed.
 
 </details>
+
 ---
 
 15. Which of the following statements about garbage collection are
@@ -423,6 +438,7 @@
 * Eligibility ≠ collection.
 
 </details>
+
 ---
 
 16. Which are true about this code? (Choose all that apply.)
@@ -451,6 +467,7 @@
 * `\s` preserves spaces.
 
 </details>
+
 ---
 
 17. What lines are printed by the following program? (Choose all
@@ -485,6 +502,7 @@
 * Defaults: `false`, `null`, `0.0`.
 
 </details>
+
 ---
 
 18. Which of the following statements about `var` are true? (Choose
@@ -506,6 +524,7 @@
 * Not allowed for fields.
 
 </details>
+
 ---
 
 19. Which are true about the following code? (Choose all that
@@ -531,6 +550,7 @@
 * Hex `B` = 11.
 
 </details>
+
 ---
 
 20. Which statement about the following class is correct?
@@ -572,6 +592,7 @@
 * Method ≠ constructor.
 
 </details>
+
 ---
 
 21. What is the output of executing the following class?
@@ -608,6 +629,7 @@
 * Output: `7-0-2-4-`
 
 </details>
+
 ---
 
 22. Given the following class, which of the following lines of code
@@ -640,6 +662,7 @@
 * Underscore rules apply.
 
 </details>
+
 ---
 
 23. Which statements about the following class are true? (Choose
@@ -680,4 +703,5 @@
 * Loop variable out of scope.
 
 </details>
+
 ---
