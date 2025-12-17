@@ -1,5 +1,6 @@
 # Understanding Java Operators
 
+## Section Content
 <!-- TOC -->
 * [Understanding Java Operators](#understanding-java-operators)
   * [Types of Operators](#types-of-operators)
