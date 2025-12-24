@@ -1,5 +1,14 @@
 # Making Decisions with the Ternary Operator
 
+## Section Content
+
+<!-- TOC -->
+* [Making Decisions with the Ternary Operator](#making-decisions-with-the-ternary-operator)
+  * [Ternary Expression and Unperformed Side Effects](#ternary-expression-and-unperformed-side-effects)
+  * [var and the Ternary (`?:`) Operator](#var-and-the-ternary--operator)
+    * [Key exam rules to remember](#key-exam-rules-to-remember)
+<!-- TOC -->
+
 The **ternary operator (`?:`)** (also called the conditional operator)
 is the only Java operator that takes **three operands** and 
 is a compact alternative to an `if/else` statement that 
@@ -61,6 +70,40 @@ In short, the ternary operator is a concise value-returning
 alternative to `if/else`, but **readability and type compatibility
 are key exam concerns**.
 
+## Ternary Expression and Unperformed Side Effects
+
+As we saw with the conditional operators, a ternary
+expression can contain an unperformed side effect, as
+only one of the expressions on the right side will be
+evaluated at runtime. Let’s illustrate this principle with
+the following example:
+```java
+int sheep = 1;
+int zzz = 1;
+int sleep = zzz<10 ? sheep++ : zzz++;
+System.out.print(sheep + "," + zzz + "," + sleep); // 2,1,1
+```
+
+Notice that since the left-hand `boolean` expression was
+`true`, only sheep was incremented. Contrast the preceding
+example with the following modification:
+
+```java
+int sheep = 1;
+int zzz = 1;
+int sleep = sheep>=10 ? sheep++ : zzz++;
+System.out.print(sheep + "," + zzz + "," + sleep); // 1,2,1
+```
+
+Now that the left-hand boolean expression evaluates to
+`false`, only `zzz` is incremented. In this manner, we see
+how the expressions in a ternary operator may not be
+applied if the particular expression is not used.
+
+For the exam, be wary of any question that includes a
+ternary expression in which a variable is modified in one
+of the expressions on the right-hand side.
+
 ## var and the Ternary (`?:`) Operator
 
 When you use `var`, the compiler must be able to **infer a single,
@@ -119,7 +162,7 @@ public static void varTernary(int a){
 
 ---
 
-### Key exam rules to remember 🧠
+### Key exam rules to remember
 
 * `var` **must infer a concrete type at compile time** 
 * Ternary branches must resolve to **one compatible type** 
