@@ -9,6 +9,13 @@
   * [Infinite Loops](#infinite-loops)
 <!-- TOC -->
 
+A common practice when writing software is doing the
+same task some number of times. You could use the
+decision structures we have presented so far to accomplish
+this, but that’s going to be a pretty long chain of if or else
+statements, especially if you have to execute the same
+thing 100 times or more.
+
 ## The `while` Statement
 The `while` statement is the simplest repetitive control structure
 in Java. It consists of a termination condition (a boolean expression)
