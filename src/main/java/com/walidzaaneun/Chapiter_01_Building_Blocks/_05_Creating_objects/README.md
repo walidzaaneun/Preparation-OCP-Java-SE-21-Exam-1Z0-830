@@ -166,18 +166,65 @@ setting constructor
 Izem
 ```
 
-Order matters for the fields and blocks of code. You can’t refer to a
-variable before it has been defined.
+
+### Order Matters for Fields and Instance Initializer Blocks
+
+In Java, **instance fields and instance initializer blocks are 
+executed in the order they appear in the source code**.
+However, **Java applies a special rule called *illegal forward
+reference***:
+
+> You may **assign** to a field before its declaration,  
+> but you may **not read** a field before its declaration.
+
+
 ```java
-public class Lion{
+public class Lion {
     { // initializer block
         System.out.println("setting field");
-        System.out.println(name); // DOES NOT COMPILE
+        System.out.println(name); // DOES NOT COMPILE (reading before declaration)
+        name = "Lion";            // COMPILES (assignment before declaration)
     }
+
     private String name = "Assad";
-    // ... rest of code
 }
 ```
+
+**Why `System.out.println(name)` does NOT compile**
+
+* `name` is **declared after** the initializer block
+* `System.out.println(name)` is a **read access**
+* Java forbids **reading a field before it is declared**
+
+This results in a **compile-time error**:
+
+```
+illegal forward reference
+```
+
+
+**Why `name = "Lion"` DOES compile**
+
+* Assigning to a field **before its declaration is allowed**
+* At object creation time, all instance fields already exist and have
+  default values (`null` for `String`)
+* Java allows **writing** to the field even though it appears later in the file
+
+
+**Why the final value is `"Assad"`, not `"Lion"`**
+
+Even though the assignment in the initializer block compiles, 
+**execution order still applies**:
+1. Field `name` is created → default value `null`
+2. Instance initializer block runs
+   → `name = "Lion"`
+3. Field initializer runs
+   → `name = "Assad"` **overwrites the previous value**
+
+📌 **Later initializations override earlier ones**
+
+---
+
 
 In this example, fields and blocks are run first in order even they are not first 
 in the class order : 
