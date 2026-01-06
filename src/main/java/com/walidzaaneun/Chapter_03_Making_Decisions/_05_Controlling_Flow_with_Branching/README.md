@@ -353,7 +353,7 @@ public class FindInMatrixUsingReturn {
 > **Exam Tip:** You must be comfortable with both forms. While `return` is often cleaner in production code, the exam may test your understanding of labeled `break` statements in complex nested loops.
  
 ## Unreachable Code
-Any code placed **immediately after** a `break`, `continue`, or
+Any code placed **immediately after** a `break`, `continue`, `yield`, or
 `return` statement within the same block is considered unreachable
 by the compiler. This results in a **compilation error**.
 
@@ -392,6 +392,17 @@ switch (hour) {
     case 1: return; hour++; // DOES NOT COMPILE: Unreachable
     case 2:
 }
+```
+4. **After `yield`**
+```java
+Number a = 10;
+String ss = switch (a) {
+  case Integer d  -> "Joseph"; 
+  case Number n -> {
+    yield "Patrick";
+    System.out.println("s"); // DOES NOT COMPILE: Unreachable
+  }
+};
 ```
 
 ### Static vs. Logic Analysis
