@@ -735,8 +735,11 @@ String getTrainer(Number height) {
 
 ### Applying Acceptable Type
 One of the simplest rules when working with `switch` and
-p*attern matching* is that the type can’t be **unrelated**. ***It
-must be the same type as the switch variable or a subtype or supertype.***
+p*attern matching* is that the type can’t be **unrelated**.
+- ***It must be the same type as the switch variable or a subtype
+  (including implemented interface) or supertype.***
+- or **an unrelated interface (if the reference type is not final)**
+
 ```java
 Number fish = 10;
 String name = switch (fish) {
