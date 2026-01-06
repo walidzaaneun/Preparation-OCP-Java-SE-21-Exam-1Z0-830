@@ -304,6 +304,8 @@ void feedAnimals() {
     final int bananas = 1;      // Compile-time constant
     int apples = 2;             // Not final
     int numberOfAnimals = 3;
+    final int kiwi;
+    kiwi = 10;
     final int cookies = getCookies(); // Runtime value (method call)
     final Integer beans = 4;
     final Integer oranges = Integer.valueOf(5);
@@ -313,6 +315,7 @@ void feedAnimals() {
     switch (numberOfAnimals) {
           case bananas:       // OK - final and literal
           case apples:        // DOES NOT COMPILE (not final)
+          case kiwi:          //  DOES NOT COMPILE (even its an int and final) 
           case getCookies():  // DOES NOT COMPILE (method call)
           case cookies :      // DOES NOT COMPILE (value comes from method)
           case beans :        // Does NOT COMPILE (Integer object, not primitive constant)
@@ -325,6 +328,8 @@ void feedAnimals() {
 ```
 - `bananas`: **✅**. It is `final` and set to a literal (`1`).
 - `apples`: **❌**. It is missing the `final` modifier.
+- `kiwi` : **❌**. Even though the variable is `int` and marked `final`
+  **but not** initialized with a literal in the same line.
 - `getCookies()`: **❌**. Method calls happen at runtime.
 - `cookies`: **❌**. Even though the variable is `final`, its value
    comes from a method, so the compiler doesn't know the value until the program actually runs.
@@ -509,6 +514,7 @@ int size = switch (measurement) {
     default -> 3;
     case 20 -> "4"; // DOES NOT COMPILE
     case 40 -> 5L; // DOES NOT COMPILE
+    case 41 -> (int)20L;
     case 50 -> null; // DOES NOT COMPILE
 };
 ```
@@ -520,6 +526,18 @@ so **all of the values must be consistent with** `int`.
 - `case 10` and `default` clauses are fine, as they can be stored as an `int`.
 - `case 20`, `case 40` and `case 50` expressions do not compile because
    each returns a type that is incompatible with `int`.
+- `case 41` clause compiles witout issue as the `long` is casted to 
+  `int`, and also we can caste the whole switch expression like this 
+  example : 
+  ```java
+    int measurement = 10;
+    
+    int size =(int) switch (measurement) {
+        case 40 -> 5L; 
+        case 41 -> 20L;
+        default -> Long.valueOf(20L);
+    };
+  ```
 
 ### Exhausting the `switch` Branches
 
