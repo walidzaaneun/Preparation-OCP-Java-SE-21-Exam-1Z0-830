@@ -718,12 +718,12 @@ String getTrainer(Number height) {
 ### Applying Acceptable Type
 One of the simplest rules when working with `switch` and
 p*attern matching* is that the type can’t be **unrelated**. ***It
-must be the same type as the switch variable or a subtype.***
+must be the same type as the switch variable or a subtype or supertype.***
 ```java
 Number fish = 10;
 String name = switch (fish) {
     case Integer freshWater -> "Bass";
-    case Number saltWater -> "ClownFish";
+    case Object superType -> "Shark";
     case String s -> "Shark"; // DOES NOT COMPILE
 };
 ```
