@@ -291,7 +291,7 @@ The type of a pattern variable in pattern matching must be
 compatible with the reference variable. Compatible types include:
 * The same type 
 * A subtype 
-* A supertype 
+* A supertype (including implemented interface)
 * An unrelated interface (if the reference type is not final)
 
 ```java
