@@ -420,7 +420,6 @@ public class StaticInit {
   static fields that require multiple lines of code, such as populating
   a static `ArrayList` or `HashMap`.
 
-Here is the summary of **Static Imports**.
 
 ## Static vs. Regular Imports
 While regular imports allow you to use class names without specifying

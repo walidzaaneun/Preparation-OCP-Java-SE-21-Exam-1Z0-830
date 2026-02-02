@@ -49,7 +49,6 @@ long high = Math.round(123.50);      // 124 (Rounds up at .5)
 int fromFloat = Math.round(123.45f); // 123 (Float returns int)
 ```
 
-Here is the summary of **Ceiling, Floor, and Exponents**, formatted as requested.
 
 ## Determining Ceiling and Floor
 

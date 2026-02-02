@@ -104,7 +104,6 @@ public final class Rhinoceros extends Mammal {} // Marked final
 
 public class Clara extends Rhinoceros {} // DOES NOT COMPILE
 ```
-Here is the summary of ****.
 
 ## Single vs. Multiple Inheritance
 Java adheres to a **single inheritance** model for classes. This means

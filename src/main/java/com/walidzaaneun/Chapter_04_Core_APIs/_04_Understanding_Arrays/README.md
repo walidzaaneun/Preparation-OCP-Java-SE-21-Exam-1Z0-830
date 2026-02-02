@@ -320,7 +320,6 @@ For an array of size `10` (`new int[10]`):
    * **Why:** Using `<=` instead of `<` causes the loop to execute one 
      extra time, crashing on the final iteration.
 
-Here is the summary of **Sorting Arrays**, formatted as requested.
 
 ## Sorting Arrays
 Java provides a convenient helper class, `java.util.Arrays`, to sort
@@ -535,7 +534,6 @@ This table summarizes the key differences between the three main array compariso
 | **`Arrays.compare()`**  | `0`                   | Positive or Negative number (indicating order)       |
 | **`Arrays.mismatch()`** | `-1`                  | Zero or Positive index (indicating location of diff) |
 
-Here is the summary of **Using Methods with Varargs**, formatted as requested.
 
 ## Using Methods with Variable Arguments (Varargs)
 

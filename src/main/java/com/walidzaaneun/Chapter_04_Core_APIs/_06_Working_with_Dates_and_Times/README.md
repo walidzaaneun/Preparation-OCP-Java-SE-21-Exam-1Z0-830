@@ -429,7 +429,6 @@ System.out.println(time.plus(duration)); // 05:15 Wraps around, date is irreleva
 ```
 
 ## `Period` vs. `Duration`
-Here is the summary of **Period vs. Duration**, formatted as requested.
 
 ## Period vs. Duration
 
