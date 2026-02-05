@@ -1,26 +1,30 @@
 # Inheriting Members
 
-## Section Content
-<!-- TOC -->
-* [Inheriting Members](#inheriting-members)
-  * [Overriding a Method](#overriding-a-method)
-    * [Using `super`](#using-super)
-    * [The Infinite Recursion Trap](#the-infinite-recursion-trap)
-  * [The 4 Rules of Overriding](#the-4-rules-of-overriding)
-    * [Rule #1: Method Signatures](#rule-1-method-signatures)
-    * [Rule #2: Access Modifiers](#rule-2-access-modifiers)
-    * [Rule #3: Checked Exceptions](#rule-3-checked-exceptions)
-    * [Rule #4: Covariant Return Types](#rule-4-covariant-return-types)
-    * [Redeclaring private Methods](#redeclaring-private-methods)
-  * [Hiding Static Methods](#hiding-static-methods)
-    * [The 5 Rules of Hiding](#the-5-rules-of-hiding)
-  * [Hiding Variables](#hiding-variables)
-    * [Definition & Mechanism](#definition--mechanism)
-    * [Reference Type Matters](#reference-type-matters)
-    * [Hiding vs. Overriding](#hiding-vs-overriding)
-  * [Writing `final` Methods](#writing-final-methods)
-    * [Exception: Private Methods](#exception-private-methods)
-<!-- TOC -->
+>## Section Content
+><!-- TOC -->
+>* [Inheriting Members](#inheriting-members)
+>  * [Overriding a Method](#overriding-a-method)
+>    * [Using `super`](#using-super)
+>    * [The Infinite Recursion Trap](#the-infinite-recursion-trap)
+>  * [The 4 Rules of Overriding](#the-4-rules-of-overriding)
+>    * [Rule #1: Method Signatures](#rule-1-method-signatures)
+>    * [Rule #2: Access Modifiers](#rule-2-access-modifiers)
+>    * [Rule #3: Checked Exceptions](#rule-3-checked-exceptions)
+>    * [Rule #4: Covariant Return Types](#rule-4-covariant-return-types)
+>    * [Redeclaring private Methods](#redeclaring-private-methods)
+>    * [Overriding Package-Private Methods](#overriding-package-private-methods)
+>      * [1. Same Package: True Overriding](#1-same-package-true-overriding)
+>      * [2. Different Package: Method Hiding/Redeclaration](#2-different-package-method-hidingredeclaration)
+>      * [Key Differences at a Glance](#key-differences-at-a-glance)
+>  * [Hiding Static Methods](#hiding-static-methods)
+>    * [The 5 Rules of Hiding](#the-5-rules-of-hiding)
+>  * [Hiding Variables](#hiding-variables)
+>    * [Definition & Mechanism](#definition--mechanism)
+>    * [Reference Type Matters](#reference-type-matters)
+>    * [Hiding vs. Overriding](#hiding-vs-overriding)
+>  * [Writing `final` Methods](#writing-final-methods)
+>    * [Exception: Private Methods](#exception-private-methods)
+><!-- TOC -->
 
 
 
@@ -224,6 +228,63 @@ public class RhinocerosBeetle extends Beetle {
   override because `int` is not a subtype of `String` and `private`
   is more restrictive than `public`.
 
+
+### Overriding Package-Private Methods
+In Java, a method with **package-private** access (no modifier)
+can only be overridden if the subclass is in the **same package**
+as the parent class. If the subclass is in a different package, the
+behavior mirrors the "`private`" rules you already noted.
+
+#### 1. Same Package: True Overriding
+When the subclass is in the same package, it "sees" the _package-private_
+method. Therefore, the standard rules of overriding apply:
+
+* **Visibility:** The child method must be _package-private_, `protected`, or `public`.
+* **Return Type:** Must be the same or a covariant (subtype).
+
+#### 2. Different Package: Method Hiding/Redeclaration
+If the subclass is in a **different package**, it cannot inherit
+the _package-private_ method. Just like with private methods, the
+child class is "blind" to the parent’s method.
+
+* **Independence:** The child can define a method with the same name
+  and signature without it being an override.
+* **No Rules Apply:** You can change the return type or modifiers
+  
+```java
+package insects;
+public class Beetle {
+    String getColor() { // Package-private
+        return "Black";
+    }
+}
+
+// ------------------------------------
+
+package specific_insects; 
+import insects.Beetle;
+
+public class RhinocerosBeetle extends Beetle {
+    // VALID: Not an override because it's a different package
+    public int getColor() { 
+        return 0xFFFFFF; 
+    }
+}
+```
+
+#### Key Differences at a Glance
+
+| Access Modifier     | Inherited?              | Can be Overridden?      | Rules Apply?               |
+|---------------------|-------------------------|-------------------------|----------------------------|
+| **Private**         | No                      | No                      | No (Always treated as new) |
+| **Package-Private** | Only if in same package | Only if in same package | Only if in same package    |
+| **Protected**       | Yes                     | Yes                     | Yes (Always)               |
+| **Public**          | Yes                     | Yes                     | Yes (Always)               |
+
+> **Note:** If you are in the **same package** and try to change 
+the return type of a package-private method, the compiler will
+throw an error because it recognizes you are *attempting* to 
+override it but breaking the rules.
 
 ## Hiding Static Methods
 Static methods cannot be overridden because they belong to the class
