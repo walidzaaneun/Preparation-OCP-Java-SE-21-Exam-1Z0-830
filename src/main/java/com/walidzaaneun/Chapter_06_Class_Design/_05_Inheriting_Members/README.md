@@ -253,22 +253,32 @@ child class is "blind" to the parent’s method.
   
 ```java
 package insects;
+
 public class Beetle {
-    String getColor() { // Package-private
-        return "Black";
-    }
+  void move() { System.out.println("Crawl"); }
 }
 
-// ------------------------------------
+class RhinocerosBeetle extends Beetle {
+  // SUCCESS: Valid override
+  @Override
+  public void move() { System.out.println("Heavy Crawl"); }
+}
 
-package specific_insects; 
+class GroundBeetle extends Beetle {
+  // FAIL: Attempting to override with an incompatible return type
+  public int move() { return 1; } // DOES NOT COMPILE
+} 
+```
+```java
+package specialty; // Different package!
 import insects.Beetle;
 
-public class RhinocerosBeetle extends Beetle {
-    // VALID: Not an override because it's a different package
-    public int getColor() { 
-        return 0xFFFFFF; 
-    }
+public class HerculesBeetle extends Beetle {
+  // VALID: This is NOT an override.
+  // We can change the return type to 'int' because Beetle.move() is invisible here.
+  public int move() {
+    return 10;
+  }
 }
 ```
 
@@ -281,10 +291,6 @@ public class RhinocerosBeetle extends Beetle {
 | **Protected**       | Yes                     | Yes                     | Yes (Always)               |
 | **Public**          | Yes                     | Yes                     | Yes (Always)               |
 
-> **Note:** If you are in the **same package** and try to change 
-the return type of a package-private method, the compiler will
-throw an error because it recognizes you are *attempting* to 
-override it but breaking the rules.
 
 ## Hiding Static Methods
 Static methods cannot be overridden because they belong to the class
